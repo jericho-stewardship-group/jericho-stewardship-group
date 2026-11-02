@@ -1,0 +1,9 @@
+<h2 id="site-pages">Explore the site</h2>
+<ul>
+  {% assign pages = site.pages | sort: 'title' %}
+  {% for item in pages %}
+  {% if item.title and item.url != '/' %}
+  <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>

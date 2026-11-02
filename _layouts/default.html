@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <title>{% unless page.url == '/' %}{{ page.title | escape }} | {% endunless %}{{ site.title | escape }}</title>
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="{{ '/' | relative_url }}">Jericho <span>Stewardship Group</span></a>
+      <nav aria-label="Main navigation">
+        <a href="{{ '/#site-pages' | relative_url }}">About</a>
+        <a href="{{ '/volunteer/' | relative_url }}">Volunteer</a>
+        <a href="{{ '/gallery/' | relative_url }}">Gallery</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">{{ site.title | escape }}</p>
+        <h1 id="page-title">{{ page.title | escape }}</h1>
+        {% if page.intro %}
+        <p class="intro">{{ page.intro | escape }}</p>
+        {% endif %}
+        {% if page.url == '/' %}
+        <a class="button" href="{{ '/volunteer/' | relative_url }}">Volunteer with Us <span aria-hidden="true">&darr;</span></a>
+        {% endif %}
+        <div class="hero-mark" aria-hidden="true">J</div>
+      </section>
+
+      <section class="content-grid" aria-label="{{ page.title | escape }}" style="grid-template-columns: minmax(0, 1fr)">
+        <article class="content-card" style="min-width: 0; line-height: 1.7; overflow-wrap: anywhere">
+          {{ content }}
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+      <a href="{{ '/blog/' | relative_url }}">Blog</a>
+      <a href="{{ '/contact-us/' | relative_url }}">Contact Us</a>
+    </footer>
+  </body>
+</html>
